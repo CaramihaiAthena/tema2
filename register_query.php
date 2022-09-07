@@ -1,4 +1,5 @@
 <?php 
+    require("dbCon.php");
 
     $email = $password = $confirmpass =  "";
 
@@ -29,7 +30,6 @@
             echo "Something went wrong";
         }
     }
-
     
     echo "Your input: ";
     echo "<br>Username: ";
@@ -42,5 +42,15 @@
     echo hashedFunction();
     echo "<br>Verified unhashed function: ";
     echo verifyUnhasshing();
+    try {
+        $stmt = $conn->prepare("INSERT INTO Athena.user (email,password) VALUES (:email, :password)");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', password_hash($password,PASSWORD_DEFAULT));
+        $stmt->execute();
+    } catch (\Error $e) {
+        echo "<br>Error on insert: ";
+        echo $e ;
+    }
 
-    include('dbCon.php');?>
+    
+?>

@@ -3,7 +3,7 @@ function showError(errorElement, errorMessage) {
     document.querySelector("."+errorElement).classList.add("display-error");  //error element = divul ascuns => il facem sa fie afisat
     document.querySelector("."+errorElement).innerHTML = errorMessage; // =>afisam eroarea referintiata prin div
 }
-//setTimeout('showError(errorElement, errorMessage) ',3000);
+
 function clearError() {
     let errors = document.querySelectorAll(".error");
     for(let error of errors) {

@@ -1,0 +1,86 @@
+html {
+    height: 100%;
+}
+body {
+    background: linear-gradient(#141e30, #243b55);
+    font-family: 'Fauna One', serif;
+}
+
+.page {
+    margin: 10% 33%;
+    background-color:#45607e;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    width: 500px;
+    
+}
+
+.user-box{
+    display: block;
+    margin: 10%;
+    font-family: Cinzel, serif;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.user-box input {
+    display: block;
+    margin: 2% 27%;
+    font-family: Cinzel, serif;
+    font-size: 17px;
+}
+a:hover {
+    background-color:#45607e;;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+#submit {
+    margin: 9% 2%;
+    font-family: Cinzel, serif;
+    padding: 2%;
+    font-weight: bold;
+    background-color:#243b55;
+    letter-spacing: 4px;
+    border-color:#141e30;
+}
+#submit:hover {
+    background-color: #45607e;
+}
+
+#login{
+    display: inline;
+    color:#141e30;
+    font-family: Cinzel, serif;
+    text-align: right;
+    margin: -12% 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+    margin-left: 53%;
+    text-decoration: none;
+}
+h2 {
+    text-align: center;
+    color: white;
+    background-color:#243b55;
+}
+
+section{
+    background-color:#243b55;
+}
+
+.error {
+    color:white;
+    background-color:#6D0000;
+    padding: 10px;
+    display: none;
+}
+
+.error.display-error {
+    display: block;
+    margin-left:86%;
+    transform: translateY(-20px);
+    width: 200px;
+}
+
