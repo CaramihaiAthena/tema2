@@ -1,0 +1,212 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  background-image: url(images/bernese2.png);
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 255, 255, 0.180);
+  background-position-x: 840px;
+  background-position-y:90px;
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    background-color:#05070c29;
+    font-family: 'Fauna One', serif;
+}
+h1 {
+    position: absolute;
+    padding: 3px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 10px;
+    color: #141e30c7;
+    font-family: Cinzel, serif;
+}
+span{
+    color: rgba(255, 255, 255, 0.865);
+}
+
+ul {
+    width: auto;
+    float: right;
+    margin-top: 8px;
+}
+
+li {
+    display: inline-block;
+    padding-top: 15px;
+    padding-right: 30px; 
+}
+
+a{
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: Cinzel, serif;
+    font-size: 1.2vw;
+}
+
+a:hover {
+    background-color: black;
+    transition: 0.5s;
+    padding: 10px;
+
+}
+
+img {
+    width: 100%;
+    margin-top: -16px;
+    margin-bottom: -21px;
+    background-repeat: repeat-y;
+}
+
+hr{
+    color: rgba(255, 255, 255, 0.325);
+}
+
+.message{
+    position: absolute;
+    top: 100px;
+    left: 36px;
+    font-size: 30px;
+    word-spacing: 3px;
+    font-style: italic;
+    font-weight: bold;
+    color: #05070ca3;
+    background: #05070c29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 35px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}
+
+
+.food {
+    position: absolute;
+    top: 100px;
+    left: 280px;
+    width: 115px;
+    height: 115px;
+}
+.treats {
+    position: absolute;
+    top: 210px;
+    left: 320px;
+    width: 115px;
+    height: 115px;   
+}
+.toy{
+    position: absolute;
+    top: 320px;
+    left: 290px;
+    width: 115px;
+    height: 115px;
+}
+.intro {
+    position: absolute;
+    top:520px;
+    font-size: 20px; 
+    margin-left: 15%;
+    font-style: italic;
+    border-style: solid;
+    border-width: 3px;
+    border-color:#05070ca3;
+    padding: 10px;
+
+}
+.description {
+    position: absolute;
+    top:610px;
+    font-size: 15px;
+    background: #05070c29;
+    color:#05070ca3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 30px;
+    word-spacing: 3px; 
+    margin-left: 6% ;
+}
+.headerline {
+    color:white;
+    max-width: 100%;
+    margin-top: 880px;
+    background-color: white;
+    max-height: 7px;
+}
+
+.discount {
+    padding: 50px;
+    margin: 10px;
+    font-size: 40px;
+    margin-left:10px;
+    overflow-x: hidden;
+}
+
+.disc {
+    font-weight: bold;
+    color:#05070ca3;
+    animation-name: rightToLeft;
+    animation-duration: 4.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rightToLeft {
+    0% {
+        transform: translateX(1000px);
+      }
+      100% {
+        transform: translateX(-160px);
+      }
+  }
+
+.subscribe {
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-bottom: 150px;
+    font-size: 25px;
+}
+
+.subscription {
+    margin-left: 450px;
+}
+
+.user-box input {
+    display: block;
+    margin: 2% 27%;
+    font-family: Cinzel, serif;
+    font-size: 17px;
+    border-radius: 10px;
+    border-style: solid;
+    padding-right: 50px;
+}
+
+#submit {
+    font-family: Cinzel, serif;
+    padding: 0.5%;
+    font-weight: bold;
+    background-color:rgba(255, 255, 255, 0.865);
+    letter-spacing: 4px;
+    border-color:#141e30;
+    margin-left: 45%;
+    margin-top: -62px;
+}
+#submit:hover {
+    background-color: #45607e;
+}
+
