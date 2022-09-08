@@ -13,6 +13,7 @@
         <header>
         <h1>Un<span>leashed</span>
         </h1>
+        <div class="dropdown">
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -22,29 +23,32 @@
 
                <?php $loggedIn = isset($_SESSION['user']) ;
                if(!$loggedIn) {?>
-                <li><a href="register.php">Register</a><li>
-                <li><a href="login.php">Login</a> <li>
-              <?php } else { ?>
-                <div class = "navbar">
                 <div class="dropdown">
-                     <a href="#" class="dropbtn">My Profile
-                     <i class="fa fa-caret-down"></i>
-                     </a>
-                <div class="dropdowncontent">
-                        <a href="#">Comenzile mele</a>
-                        <a href="#">Favorite</a>
-                        <a href ="logout.php">Log Out</a>
-                </div> 
-            </div> 
+                    <button id="dropbtn">My Profile<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="login.php">Login</a>
+                            <a href="register.php">Register</a>
+                        </div>
                 </div>
-  
+              <?php } else { ?>
+                <div class="dropdown">
+                    <button id="dropbtn">My Profile<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Purchases</a>
+                            <a href="#">Favorites</a>
+                            <a href="logout.php">Log out</a>
+                        </div>
+                </div>
                 <?php }  ?>
             </ul>
         </nav>
+        </div>
+       
         </header>
         
 
         <body>
+            
             <p class = "message">Get food, treats & toys for your best friend</p>
             <div>
             <img src="images/food.png" alt="food" class="food">
@@ -81,6 +85,6 @@
        
 
 
-        <script src="" async defer></script>
+        <script src="welcome.js" async defer></script>
 
 </html>
