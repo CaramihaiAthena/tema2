@@ -1,47 +1,53 @@
 html {
     height: 100%;
 }
+
 body {
-    background: linear-gradient(#141e30, #243b55);
+    background-color: rgba(156, 239, 236, 0.17) !important;
     font-family: 'Fauna One', serif;
 }
-
+.space {
+    margin-top:100px;
+}
+.sp {
+    margin-top:50px;
+}
 .login-box {
-    margin: 10% 33%;
-    background-color:#45607e;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    width: 500px;
+     /* margin: 10% 33% !important; */
+    /* background-color:#45607e; */
+    /* box-shadow: 0 15px 25px rgba(0,0,0,.6); */
+    /* width: 500px; */
     
 }
 .user-box{
-    display: block;
-    margin: 10%;
+     display: block;
+    margin-top: 15%; 
     font-family: Cinzel, serif;
-    text-align: center;
+    /* text-align: center;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: bold; */
 }
 
 .user-box input {
-    display: block;
-    margin: 2% 27%;
+    /* display: block; */
+    /* margin: 2% 27%; */
     font-family: Cinzel, serif;
-    font-size: 17px;
+    /* font-size: 17px; */
 }
 a:hover {
-    background-color:#45607e;;
-    color: #fff;
+    /* background-color:#45607e;; */
+    /* color: #fff; */
     border-radius: 5px;
-    padding: 5px;
+    /* padding: 5px; */
 }
 #submit {
-    margin: 9% 2%;
-    font-family: Cinzel, serif;
+    margin-top: 15%; 
     padding: 2%;
     font-weight: bold;
-    background-color:#243b55;
+    background-color: black;
     letter-spacing: 4px;
-    border-color:#141e30;
+    border-color:#243b55;
+    color:white;
 }
 #submit:hover {
     background-color: #45607e;
@@ -52,21 +58,25 @@ a:hover {
     color:#141e30;
     font-family: Cinzel, serif;
     text-align: right;
-    margin: -12% 5%;
+    /* margin: -12% 5%;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; */
     letter-spacing: 4px;
-    margin-left: 45%;
+    /* margin-left: 45%;  */
     text-decoration: none;
+    margin-left: 25px;
+}
+#register:hover {
+    text-decoration: underline;
 }
 
 h2 {
-    text-align: center;
+    /* text-align: center; */
     color: white;
-    background-color:#243b55;
+    /* background-color:#243b55; */
 }
 
 section{
-    background-color:#243b55;
+    /* background-color:#243b55; */
 }
 

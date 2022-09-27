@@ -1,0 +1,21 @@
+body {
+    background-color: rgba(156, 239, 236, 0.17) !important;
+}
+
+h4 {
+    display: inline;
+    font-size: 25px;
+    
+}
+.space {
+    margin-top:96px;
+}
+
+fieldset {
+    color: black;
+}
+
+.help {
+    writing-mode: vertical-rl;
+    text-decoration: underline;
+}
