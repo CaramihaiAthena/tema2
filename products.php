@@ -1,6 +1,8 @@
 <?php 
-    require("dbCon.php");
+    session_start(); 
+    require("dbCon.php"); 
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +11,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="products.css">
     </head>
@@ -40,14 +43,8 @@
             </ul>
             </div>
         </div>
-    </div>
-
-
+    </div> 
 <?php
-    
-
-
-
 ?>
     <div class="container py-5" >
             <div class="row m-4" >
@@ -60,29 +57,42 @@
                 
                     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
                 
+                     if(!empty($_SESSION['shopping_cart'])) {
+                    // $total = 0;
                     foreach($rows as $val) {
                     ?>
                     <div class="col-xl-3 m-5 p-2" >
+                        <form method="POST" action="carthandler.php?action=update&id=<?php echo $val["id"];?>">
                         <div class="card d-flex flex-column align-items-center p-2" >
                         <img src="images/foodcat.jpeg" alt="foodcat" width="200px" height="250px">
                             <div class="card-body d-flex flex-column align-items-left p-2" >
-                            
                                 <h4 class="card-title"><?php echo "{$val['nume']}";?></h4>
                                 <h3 class="card-title"><?php echo "{$val['pret']}"." RON";?></h3>
                                 <p class="card-text"><?php echo "{$val['descriere']}";?></p>
-                                <a href="purchases.php" class="btn btn-warning m-1"> Add to cart</a>
+                                <!-- <input type="number" name="cantitate" value="1" class="form-control"> -->
+                                <input type="hidden" name="hidden_id" value="<?php echo $val['id']; ?>">
+                                <input type="hidden" name="hidden_name" value="<?php echo $val['nume']; ?>">
+                                <input type="hidden" name="hidden_price" value="<?php echo $val['pret']; ?>">
+                                <input type="hidden" name="hidden_desc" value="<?php echo $val['descriere']; ?>">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="hidden_quantity">
+                                <!-- <a href="purchases.php" name="add" class="btn btn-warning m-1">Add to cart</a> -->
+                                <button type="submit" name="add" class="btn btn-warning m-1 addToCartBtn">Add to cart</button>
                                 <a href="favorites.php"class="btn btn-danger ">Favorites</a>
                             </div>
                         </div>
                     </div>
+                        </form>
+
                     <?php
+                    }
                     }
                     ?>
             </div> 
     </div>
 
         
-        <script src="" async defer></script>
+        <script src="purchases.js" async defer> </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

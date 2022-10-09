@@ -31,17 +31,42 @@
         }
     }
     
-    echo "Your input: ";
-    echo "<br>Username: ";
-    echo $email;
-    echo "<br>Password: ";
-    echo $password;
-    echo "<br>Confirm password: ";
-    echo $confirmpass;
-    echo "<br>Hashed function: ";
-    echo hashedFunction();
-    echo "<br>Verified unhashed function: ";
-    echo verifyUnhasshing();
+    try {
+        $_SESSION['user'] = '';
+    if(isset($_POST['submit'])) {
+        try {
+            $user_login = !empty($_POST['email']) ? ($_POST['email']) :null;  //if email is not empty, post[email], otherwise will be null
+            $passwordAttempt = !empty($_POST['password'])? ($_POST['password']) :null;
+
+            $stmt = $conn->prepare("INSERT INTO Athena.user (email,password) VALUES (:email, :password)");
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', password_hash($password,PASSWORD_DEFAULT));
+            $stmt->execute();
+
+            //Fetch 
+            $userStmt = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            //IF row is false
+            if($userStmt != false) {
+                 $_SESSION['user'] = $user_login;
+                 echo '<script>window.location.replace("welcome.php")</script>';                            
+            }else {
+                echo '<script>window.location.replace("welcome.php")</script>';    
+
+            }
+            
+        }catch(PDOException $e) {
+            $error = "Error: ".$e->getMessage();
+            echo '<script> alert("'.$error.'"); </script>';
+
+        }
+    }
+
+    } catch (\Error $e) {
+        echo "<br>Error on select: ";
+        echo $e ;
+    }
+    
     try {
         $stmt = $conn->prepare("INSERT INTO Athena.user (email,password) VALUES (:email, :password)");
         $stmt->bindParam(':email', $email);

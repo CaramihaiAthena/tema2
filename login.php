@@ -31,7 +31,7 @@
             <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4 mt-5 p-1 d-flex justify-content-center border">
                 <form method="POST" action="login_query.php">
                     <fieldset>
-                        <div class="user-box">
+                    <div class="user-box">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" placeholder="example@yahoo.com">
                     </div>

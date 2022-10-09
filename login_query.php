@@ -20,7 +20,7 @@
         $_SESSION['user'] = '';
     if(isset($_POST['submit'])) {
         try {
-            $user_login = !empty($_POST['email']) ? ($_POST['email']) :null;
+            $user_login = !empty($_POST['email']) ? ($_POST['email']) :null;  //if email is not empty, post[email], otherwise will be null
             $passwordAttempt = !empty($_POST['password'])? ($_POST['password']) :null;
 
             //Retrieve
