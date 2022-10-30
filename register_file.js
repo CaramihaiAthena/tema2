@@ -45,3 +45,10 @@ form.onsubmit = function(event) {
 
        //daca formul are erori, afiseaza-le 3 secunde
     }
+
+
+// [{
+//     idProdus: 1,
+//     quantity:2
+// }]
+    

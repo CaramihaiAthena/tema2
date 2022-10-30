@@ -1,8 +1,6 @@
-<?php 
-    session_start(); 
-    require("dbCon.php"); 
-?>
-
+<?php
+session_start();
+include ('dbCon.php'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,13 +9,11 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="products.css">
     </head>
     <body>
-
-     <!-- clasa navbar, care se extinde pentru large devices, cu textul dark si cu background light grey -->
+             <!-- clasa navbar, care se extinde pentru large devices, cu textul dark si cu background light grey -->
     <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <div class="navbar-brand">Un<span>leashed</span></div>
@@ -39,60 +35,52 @@
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </li>
-
             </ul>
             </div>
         </div>
     </div> 
-<?php
-?>
-    <div class="container py-5" >
-            <div class="row m-4" >
-                <h1 class="text-center">Products</h1>
-                <?php    
-                    $sql = "SELECT * FROM Athena.products";
-                    $result = $conn->prepare($sql);
-                
-                    $result->execute();
-                
-                    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-                
-                     if(!empty($_SESSION['shopping_cart'])) {
-                    // $total = 0;
-                    foreach($rows as $val) {
-                    ?>
+
+
+        <?php 
+        try {
+        ?>
+            <div class="container py-5" >
+                <div class="row m-4" >
+        <?php
+            $query = $conn->prepare("SELECT * FROM Athena.products");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $v) {
+        ?>
+        <!-- ar fi trebuit sa fie 4 coloane, doar ca am adaugat margin si padding -->
                     <div class="col-xl-3 m-5 p-2" >
-                        <form method="POST" action="carthandler.php?action=update&id=<?php echo $val["id"];?>">
-                        <div class="card d-flex flex-column align-items-center p-2" >
-                        <img src="images/foodcat.jpeg" alt="foodcat" width="200px" height="250px">
-                            <div class="card-body d-flex flex-column align-items-left p-2" >
-                                <h4 class="card-title"><?php echo "{$val['nume']}";?></h4>
-                                <h3 class="card-title"><?php echo "{$val['pret']}"." RON";?></h3>
-                                <p class="card-text"><?php echo "{$val['descriere']}";?></p>
-                                <!-- <input type="number" name="cantitate" value="1" class="form-control"> -->
-                                <input type="hidden" name="hidden_id" value="<?php echo $val['id']; ?>">
-                                <input type="hidden" name="hidden_name" value="<?php echo $val['nume']; ?>">
-                                <input type="hidden" name="hidden_price" value="<?php echo $val['pret']; ?>">
-                                <input type="hidden" name="hidden_desc" value="<?php echo $val['descriere']; ?>">
-                                <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="hidden_quantity">
-                                <!-- <a href="purchases.php" name="add" class="btn btn-warning m-1">Add to cart</a> -->
-                                <button type="submit" name="add" class="btn btn-warning m-1 addToCartBtn">Add to cart</button>
-                                <a href="favorites.php"class="btn btn-danger ">Favorites</a>
+                    <form method="POST" action="purchases.php?action=add&id=<?php echo $v["id"];?>">
+                        <div class="card">
+                            <img src="images/foodcat.jpeg" class="card-img-top" alt="">
+                            <div class="card-body" style="width: 18rem;">
+                            <h5 class="card-title" name="nume" ><?php echo $v['nume']; ?></h5>
+                            <p class="card-text"><?php echo $v['descriere']; ?></p>
+                            <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                            <p class="card-text"><?php echo $v['pret']." RON"; ?></p>
+                            <input type="submit" name="add" value="Add to Cart" class="btnAddAction" />
+                            <input type="hidden" name="hidden_name" value="<?php echo $v['nume']; ?>">
+                            <input type="hidden" name="hidden_price" value="<?php echo $v['pret']; ?>">
+                            <input type="hidden" name="hidden_desc" value="<?php echo $v['descriere']; ?>">
                             </div>
-                        </div>
+                        </div>       
+                    </form>
                     </div>
-                        </form>
-
-                    <?php
-                    }
-                    }
-                    ?>
-            </div> 
-    </div>
-
-        
-        <script src="purchases.js" async defer> </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <?php
+       
+            }
+        ?> 
+                </div>
+            </div>
+        <?php
+        }catch(PDOException $e) {
+            echo "Error ".$e->getMessage();
+        }
+        ?>
+        <script src="" async defer></script>
     </body>
 </html>
