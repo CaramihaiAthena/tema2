@@ -54,7 +54,7 @@
                 echo '<script>window.location.replace("welcome.php")</script>';    
 
             }
-            
+            // var_dump($_SESSION);
         }catch(PDOException $e) {
             $error = "Error: ".$e->getMessage();
             echo '<script> alert("'.$error.'"); </script>';

@@ -1,30 +1,6 @@
 <?php session_start(); 
 include ('dbCon.php');
-
-if(isset($_POST['add'])){
-    if(isset($_SESSION['cart'])) {
-        $session_array_id = array_column($_SESSION['cart'],'id');
-        if(!in_array($_GET['id'], $session_array_id)) {
-            $session_array = array(
-                'id' => $_GET['id'],
-                'nume' => $_POST['hidden_name'],
-                'pret' => $_POST['hidden_price'],
-                'quantity' =>$_POST['quantity'],
-                'descriere' => $_POST['hidden_desc']
-            );
-            $_SESSION['cart'][] = $session_array;
-        }
-    } else {
-        $session_array = array(
-            'id' => $_GET['id'],
-            'nume' => $_POST['hidden_name'],
-            'pret' => $_POST['hidden_price'],
-            'quantity' =>$_POST['quantity'],
-            'descriere' => $_POST['hidden_desc']
-        );
-        $_SESSION['cart'][] = $session_array;
-    }
-}
+require ('filehandler.php');
 
 ?>
 
@@ -36,35 +12,55 @@ if(isset($_POST['add'])){
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="">
     </head>
     <body>
-
+        <div>
+            <h1>Cart items:  <span> <?php getNumberOfCartItems(); ?> </span></h1>
+        </div>
         <?php 
         if(!empty($_SESSION['cart'])) {
             foreach($_SESSION['cart'] as $key=>$value) {
         ?>
-                <div class="col-md-2">
-                <!-- imaginea produsului -->
-                 </div>
-                <div class="col-md-2">
-                    <h2><?php echo $value['nume'] ?></h2>
-                    <h5><?php echo $value['pret']." RON"; ?></h5>
-                    <h3>Cantitate:</h3>
-                    <h5><?php echo $value['quantity'];?></h5>
-                </div>
-                <div class="col-md-2">
-                    <h3>Descriere produs: </h3>
-                    <h5><?php echo $value['descriere'] ?></h5>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-danger btn-sm">Remove</button>
-                </div>
+        <div class="product">
+            <div class="row">
+            <div class="col-md-2">
+                    <!-- imaginea produsului -->
             </div>
+            <div class="col-md-2">
+                <h2><?php echo $value['nume'] ?></h2>
+                <h5><?php echo $value['quantity']. " BUC";?></h5>
+                <h5><?php echo $value['pret']." RON"; ?></h5>
+            </div>
+            <div class="col-md-2">
+                <h3>Descriere produs: </h3>
+                <h5><?php echo $value['descriere'] ?></h5>
+            </div>
+            <div class="col-md-2">
+                <h4>Subtotal:</h4>
+                <h5> <?php getSubtotal($value['id']); ?> </h5>
+            </div>
+            <div class="col-md-2">
+                <a href="purchases.php?remove-item-id=<?php echo $value['id']?>">Remove</a>
+            </div>
+        </div>
+
+        <?php   
+            } 
+        }?>
+        <div class="col-md-2">
+                <h4>Total:</h4>
+                <h5> <?php getTotal(); ?> </h5>
+        </div>
+        <div class="col-md-2">
+                <a href="purchases.php?clear-cart" class="btn btn-outline-danger">Clear cart</a>
+        </div>
+
+        <div class="col-md-2">
+            <a href="checkOutPage.php" class="btn btn-outline-primary">Pay Now</a>
+        </div>
             </div>
 
-        <?php } 
-        }?>
-        <script src="" async defer></script>
     </body>
 </html>

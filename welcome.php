@@ -1,5 +1,7 @@
 <!-- bootstrap -->
-<?php session_start(); ?>
+<?php session_start();
+    //var_dump($userStmt);
+    var_dump($_SESSION['id']); ?>
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +43,7 @@
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Profile</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Purchases</a></li>
+                            <li><a class="dropdown-item" href="purchases.php">Purchases</a></li>
                             <li><a class="dropdown-item" href="#">Favorites</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
@@ -132,6 +134,7 @@
     </div>
     </div>
 
+    <?php //var_dump($_SESSION[['cart']['id']]); ?>
 
         <script src="" async defer></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

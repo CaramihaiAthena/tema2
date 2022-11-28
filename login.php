@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+require ('login_query.php')?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,27 +53,6 @@
             <div class="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4"></div>
         </div>
     </div>
-
-    <!-- <div class="login-box">
-        <h2>Login</h2>
-    <form method="POST" action="login_query.php">
-            <div class="user-box">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="example@yahoo.com">
-            </div>
-
-            <div class="user-box">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-            </div>
-
-            <section>
-            <input type="submit" id="submit" name="submit" value="Login">
-            <a href="register.php" id ="register">Register here</a>
-            </section>
-    
-        </form> 
-    </div>  -->
         
         <script src="" async defer></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
