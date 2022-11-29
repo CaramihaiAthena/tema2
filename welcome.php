@@ -1,7 +1,8 @@
 <!-- bootstrap -->
 <?php session_start();
-    //var_dump($userStmt);
-    var_dump($_SESSION['id']); ?>
+include_once('dbCon.php');
+var_dump($_SESSION);
+ ?>
 
 <!DOCTYPE html>
 <html>

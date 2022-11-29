@@ -6,6 +6,9 @@ body {
     background-color: rgba(156, 239, 236, 0.17) !important;
     font-family: 'Fauna One', serif;
 }
+form {
+    margin-left:40%;
+}
 .space {
     margin-top:100px;
 }
@@ -71,8 +74,8 @@ a:hover {
 }
 
 h2 {
-    /* text-align: center; */
-    color: white;
+    text-align: center;
+    color: black;
     /* background-color:#243b55; */
 }
 
@@ -80,3 +83,6 @@ section{
     /* background-color:#243b55; */
 }
 
+.sp {
+    margin-top:50px;
+}

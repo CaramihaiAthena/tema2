@@ -1,5 +1,6 @@
 <?php session_start();
-require ('register_query.php'); ?>
+include_once('dbCon.php');
+?>
 <!DOCTYPE html>
 <html>
     <head>
