@@ -7,9 +7,11 @@ if(isset($_POST['pay'])) {
         var_dump($user_id);
         $order_date = date('Y-m-d H:i:s');
 
-        $stmt = $conn->prepare("INSERT INTO Athena.orders (user_id,order_date) VALUES (:user_id, :order_date)");
+        $order_status = "ordered";
+        $stmt = $conn->prepare("INSERT INTO Athena.orders (user_id,order_date,order_status) VALUES (:user_id, :order_date,:order_status)");
         $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':order_date', $order_date);
+        $stmt->bindParam(':order_date', $order_date); 
+        $stmt->bindParam(':order_status', $order_status);
         $stmt->execute();
         
         $userStmt = $stmt->fetch(PDO::FETCH_ASSOC);

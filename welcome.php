@@ -1,7 +1,6 @@
 <!-- bootstrap -->
 <?php session_start();
 include_once('dbCon.php');
-var_dump($_SESSION);
  ?>
 
 <!DOCTYPE html>

@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) {
     } else {
         if (password_verify($password, $result['password'])) {
             $_SESSION['id'] = $result['id'];
+            $_SESSION['user'] = $email;      
             header("Location: welcome.php");
         } else {
             echo '<p class="error">Username password combination is wrong!</p>';

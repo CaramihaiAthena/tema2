@@ -1,6 +1,7 @@
 <?php
 session_start();
-include ('dbCon.php'); ?>
+include ('dbCon.php'); 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +11,12 @@ include ('dbCon.php'); ?>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="products.css">
     </head>
     <body>
-             <!-- clasa navbar, care se extinde pentru large devices, cu textul dark si cu background light grey -->
     <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <div class="navbar-brand">Un<span>leashed</span></div>
@@ -27,21 +30,26 @@ include ('dbCon.php'); ?>
                     <li class="nav-item"><a class="nav-link" href="aboutus.php">About us</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Profile</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Purchases</a></li>
-                            <li><a class="dropdown-item" href="#">Favorites</a></li>
-                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                        </ul>
+                    <li>
+                        <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> My Profile</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="purchases.php">My Cart</a>
+                                <a class="dropdown-item" href="#">Favorites</a>
+                                <a class="dropdown-item" href="orders.php">My Orders</a>
+                                <a class="dropdown-item" href="logout.php">Logout</a>
+                            </div>
+                </div>
                     </li>
+
+
             </ul>
             </div>
         </div>
-    </div> 
+    </div>
+    
 
-
-        <?php 
+    <?php 
         try {
         ?>
             <div class="container py-5" >
@@ -81,6 +89,7 @@ include ('dbCon.php'); ?>
             echo "Error ".$e->getMessage();
         }
         ?>
+        
         <script src="" async defer></script>
     </body>
 </html>

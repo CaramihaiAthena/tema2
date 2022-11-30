@@ -1,7 +1,7 @@
 <?php session_start(); 
 include ('dbCon.php');
 require ('paymentHandler.php');
-// var_dump($conn);
+//var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

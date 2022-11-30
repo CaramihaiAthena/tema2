@@ -14,8 +14,8 @@ session_start();
     </head>
     <body>
 
-                <!-- clasa navbar, care se extinde pentru large devices, cu textul dark si cu background light grey -->
-                <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- clasa navbar, care se extinde pentru large devices, cu textul dark si cu background light grey -->
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <div class="navbar-brand">Un<span>leashed</span></div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNav">
@@ -31,7 +31,7 @@ session_start();
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Profile</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Purchases</a></li>
+                            <li><a class="dropdown-item" href="purchases.php">Purchases</a></li>
                             <li><a class="dropdown-item" href="#">Favorites</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>

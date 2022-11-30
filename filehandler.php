@@ -88,5 +88,7 @@ function getTotal() {
     echo number_format(array_sum($sum),2);
 }
 
+//var_dump($_SESSION);
+
 
 ?>

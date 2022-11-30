@@ -31,7 +31,7 @@ session_start();
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Profile</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Purchases</a></li>
+                            <li><a class="dropdown-item" href="purchases.php">Purchases</a></li>
                             <li><a class="dropdown-item" href="#">Favorites</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
