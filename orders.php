@@ -1,7 +1,5 @@
 <?php session_start();
 require("dbCon.php");
-
-//var_dump($_SESSION['id']);
  ?>
 <!DOCTYPE html>
 <html>

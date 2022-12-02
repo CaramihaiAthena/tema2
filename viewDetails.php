@@ -35,14 +35,47 @@ $data = $query->fetch(PDO::FETCH_BOTH);
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="viewDetails.css">
     </head>
     <body>
-        <?php
-    //var_dump($data);
-        ?>
-        <div class="col-md-6">
-            <h4>Order details</h4>
+
+    <div class="py-3">
+        <div class="container">
+            <h6>
+                <a href="welcome.php">Home /</a>
+                <a href="orders.php">My Orders</a>
+            </h6>
+        </div>
+    </div>
+
+    <div class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">View order</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Delivery details</h4> <hr>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12 mb-2">
+                                        <label class="fw-bold">Tracking number: </label>
+                                        <div class="border p-1" ><?php echo $data['tracking_no']; ?> </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                        <label class="fw-bold">Order date: </label>
+                                        <div class="border p-1" ><?php echo $data['order_date']; ?> </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                        <label class="fw-bold">Status: </label>
+                                        <div class="border p-1" ><?php echo $data['order_status']; ?> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                                <div class="col-md-6">
+                                <h4>Order details</h4>
             <hr>
 
             <table class="table">
@@ -56,15 +89,14 @@ $data = $query->fetch(PDO::FETCH_BOTH);
                 <tbody>
         <?php
                 $order_query = $conn->prepare("SELECT o.id as oid, o.tracking_no, o.user_id, op.*, p.* 
-                            FROM Athena.orders o, Athena.orderProduct op, Athena.products p
-                            WHERE o.user_id = '$userId' and 
-                            op.order_id= o.id and p.id = op.product_id 
-                            and o.tracking_no = '$tracking_no'");
+                                              FROM Athena.orders o JOIN Athena.orderProduct op 
+                                              ON o.id=op.order_id 
+                                              JOIN Athena.products p ON op.product_id = p.id 
+                                              AND tracking_no='$tracking_no';");
                 $order_query->execute();
                 $sum = [];
                 if($order_query->rowCount() > 0) {
                     foreach($order_query as $item) {
-                        //var_dump($item);
                         ?>
                         <tr>
                         <td class="align-middle"> <?php echo $item['nume']; ?> </td>
@@ -76,14 +108,14 @@ $data = $query->fetch(PDO::FETCH_BOTH);
                     }
                     $total = number_format(array_sum($sum),2);
                 }
-                
 
                 ?>
                 </tbody>
             </table>
                 <hr>
                 <h5>Total price : <span class="float-end fw-bold"><?php echo $total." RON"; ?></span></h5>
-        </div>    
+                                </div>       
+                                          
         <script src="" async defer></script>
     </body>
 </html>
