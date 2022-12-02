@@ -7,9 +7,13 @@ if(isset($_POST['pay'])) {
         var_dump($user_id);
         $order_date = date('Y-m-d H:i:s');
 
+        $tracking_no = "TPW".rand(1111,9999);
         $order_status = "ordered";
-        $stmt = $conn->prepare("INSERT INTO Athena.orders (user_id,order_date,order_status) VALUES (:user_id, :order_date,:order_status)");
+
+        $stmt = $conn->prepare("INSERT INTO Athena.orders (user_id,tracking_no,order_date,order_status) 
+        VALUES (:user_id, :tracking_no, :order_date,:order_status)");
         $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':tracking_no', $tracking_no); 
         $stmt->bindParam(':order_date', $order_date); 
         $stmt->bindParam(':order_status', $order_status);
         $stmt->execute();

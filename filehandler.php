@@ -69,10 +69,6 @@ function getSubtotal($product_id) {
         }
     }
 }
-// foreach ($_SESSION['cart'] as $key=>$value){
-//     $total = array($value['id']);
-//     var_dump($total);
-// }
 
 function getNumberOfCartItems() {
     echo count($_SESSION['cart']);

@@ -1,7 +1,7 @@
 <?php session_start(); 
 include ('dbCon.php');
 require ('filehandler.php');
-var_dump($_SESSION['id']);
+//var_dump($_SESSION['id']);
 ?>
 
 <!DOCTYPE html>
