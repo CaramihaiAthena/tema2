@@ -1,5 +1,12 @@
 <?php session_start();
 require("dbCon.php");
+ require ('user_functions.php');
+
+$userId = $_SESSION['id'];
+$query = $conn->prepare("SELECT * FROM Athena.orders where user_id='$userId'");
+$query->execute();
+
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -13,11 +20,6 @@ require("dbCon.php");
         <link rel="stylesheet" href="orders.css">
     </head>
     <body>
-    <?php
-            $userId = $_SESSION['id'];
-            $query = $conn->prepare("SELECT * FROM Athena.orders where user_id='$userId'");
-            $query->execute();
-    ?>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-borderd table-striped center" style="width:50%">
@@ -27,6 +29,8 @@ require("dbCon.php");
                     <th>Order date</th>
                     <th>Status</th>
                     <th>View details</th>
+                    
+                    
                 </thead>
 
                 <tbody>
@@ -34,7 +38,8 @@ require("dbCon.php");
                     if($query->rowCount() > 0) {
                         foreach($query as $item) {
                             ?>
-                            <tr>
+                            <div>
+                            <tr id="row">
                                 <td> <?php echo $item['id']; ?> </td>
                                 <td> <?php echo $item['tracking_no']; ?> </td>
                                 <td> <?php echo $item['order_date']; ?> </td>
@@ -42,7 +47,16 @@ require("dbCon.php");
                                 <td>
                                     <a href="viewDetails.php?t=<?= $item['tracking_no']; ?>" class="btn btn-primary">View details</a>
                                 </td>
+                                <td>
+                                    <?php 
+                                    if($item['order_status'] == 'deliverd') { ?> 
+                                        <a href="orders.php?remove-item" class="btn btn-outline-danger" id="btn">Remove item</a>
+                                        <?php
+                                    }
+                                    ?>
+                                </td>
                             </tr>
+                            </div>
                             <?php
                         }
                     }else {
@@ -59,6 +73,6 @@ require("dbCon.php");
         </div>
     </div>
 
-        <script src="" async defer></script>
+        <script src="orders.js" async defer></script>
     </body>
 </html>

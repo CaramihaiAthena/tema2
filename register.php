@@ -43,10 +43,21 @@ include_once('dbCon.php');
             <form name="myForm" method="POST" action="register_query.php">
                 <fieldset>
                     <div class = "user-box">
+                    <label for="fname">First name</label>
+                    <input type="text" id="fname" name="fname">  
+                    </div>
+                    <div class = "user-box">
+                    <label for="lname">Last name</label>
+                    <input type="text" id="lname" name="lname">  
+                    </div>
+                    <div class = "user-box">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" placeholder="example@yahoo.com">  
                     </div>
-        
+                    <div class = "user-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">  
+                    </div>
                     <div class = "user-box">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
